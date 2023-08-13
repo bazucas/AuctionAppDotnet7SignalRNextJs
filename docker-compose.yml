@@ -176,7 +176,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      # - pgdata:/var/lib/postgresql/data
+      - /var/lib/postgresql/data
 
   mongo:
     image: mongo
@@ -186,9 +187,10 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongodata:/var/lib/mongodb/data
+      # - mongodata:/var/lib/mongodb/data
+      - /var/lib/mongodb/data
 
-volumes:
-  pgdata:
-  mongodata:
+# volumes:
+#   pgdata:
+#   mongodata:
   
