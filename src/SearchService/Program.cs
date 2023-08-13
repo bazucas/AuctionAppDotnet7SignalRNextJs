@@ -1,0 +1,36 @@
+using MongoDB.Driver;
+using MongoDB.Entities;
+using SearchService.Data;
+using SearchService.Models;
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddControllers();
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+//if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
+
+// app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+try
+{
+    await DbInitializer.InitDb(app);
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+}
+
+app.Run();
