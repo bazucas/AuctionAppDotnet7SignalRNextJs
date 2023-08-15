@@ -1,3 +1,4 @@
+using Duende.IdentityServer;
 using IdentityService.Data;
 using IdentityService.Models;
 using Microsoft.AspNetCore.Identity;
@@ -32,7 +33,7 @@ internal static class HostingExtensions
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients(builder.Configuration))
+            .AddInMemoryClients(Config.Clients)
             .AddAspNetIdentity<ApplicationUser>()
             .AddProfileService<CustomProfileService>();
 
